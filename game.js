@@ -23,7 +23,7 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
 
 function handlePlayerChange() {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    statusDisplay.textContent = currentPlayer;
+    statusDisplay.textContent = `Player ${currentPlayer}'s turn`;
 }
 
 function handleResultValidation() {
@@ -44,14 +44,14 @@ function handleResultValidation() {
 
     if (roundWon) {
         gameActive = false;
-        alert(`Player ${currentPlayer} has won!`);
+        statusDisplay.textContent = `Player ${currentPlayer} has won!`;
         return;
     }
 
     let roundDraw = !gameState.includes("");
     if (roundDraw) {
         gameActive = false;
-        alert("Game is a draw!");
+        statusDisplay.textContent = 'Game is a draw!';
         return;
     }
 
@@ -74,7 +74,7 @@ function handleRestartGame() {
     gameActive = true;
     currentPlayer = 'X';
     gameState = ["", "", "", "", "", "", "", "", ""];
-    statusDisplay.textContent = currentPlayer;
+    statusDisplay.textContent = `Player ${currentPlayer}'s turn`;
     cells.forEach(cell => {
         cell.textContent = "";
         cell.classList.remove('x', 'o');
